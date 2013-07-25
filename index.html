@@ -4,19 +4,48 @@
 </head>
 <body>
   <h1>Hello world!</h1>
+  <p>
+    In a match of "player 1 vs player 2", the graphs represent the percentage of games a player has won. The line with the X's marks the scores of the first player, the line with the O's marks the scores of the second player, and the line with the diamonds marks the percentage of draws.
+  </p>
 
-  <div id="chart1" style="height:600px; width:800px;"></div>
-  <div id="chart2" style="height:600px; width:800px;"></div>
-  <div id="chart3" style="height:600px; width:800px;"></div>
+  <p>
+    Every round, the starting player is changed, to keep things fair.
+  </p>
+
+  <p>
+    <h2>AI - AI</h2>
+    Battle of the brains; two AI bots combating each other.
+    <div id="chart1" style="height:600px; width:800px;"></div>
+  </p>
+
+  <br />
+  <br />
+  
+  <p>
+    <h2>AI - random</h2>
+    The random bot choses a random (free) field, the AI remains the same.
+    <div id="chart2" style="height:600px; width:800px;"></div>
+  </p>
+
+  <br />
+  <br />
+
+  <p>
+    <h2>AI - dumb</h2>
+    The dumb bot choses the next free field (in reading order; left top first, right bottom last).
+    <div id="chart3" style="height:600px; width:800px;"></div>
+  </p>
 
   <!-- Visual stuff -->
-  <script src="/js/visual/jquery.min.js"        type="text/javascript"></script>
-  <script src="/js/visual/jquery.jqplot.min.js" type="text/javascript"></script>
-  <script src="/js/visual/visualize.js"         type="text/javascript"></script>
+  <script src="/js/visual/jquery.min.js"         type="text/javascript"></script>
+  <script src="/js/visual/jquery.jqplot.min.js"  type="text/javascript"></script>
+  <script src="/js/visual/visualize.js"          type="text/javascript"></script>
 
   <!-- Game related stuff -->
-  <script src="/js/tic-tac-toe/game.js"         type="text/javascript"></script>
-  <script src="/js/tic-tac-toe/gameKeeper.js"   type="text/javascript"></script>
-  <script src="/js/tic-tac-toe/player-ai.js"    type="text/javascript"></script>
-  <script src="/js/main.js" 					          type="text/javascript"></script>
+  <script src="/js/tic-tac-toe/game.js"          type="text/javascript"></script>
+  <script src="/js/tic-tac-toe/gameKeeper.js"    type="text/javascript"></script>
+  <script src="/js/tic-tac-toe/player-ai.js"     type="text/javascript"></script>
+  <script src="/js/tic-tac-toe/player-random.js" type="text/javascript"></script>
+  <script src="/js/tic-tac-toe/player-dumb.js" type="text/javascript"></script>
+  <script src="/js/main.js" 					           type="text/javascript"></script>
 </body>

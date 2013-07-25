@@ -1,6 +1,6 @@
 gameKeeper_obj = (function() {
   var players = [],
-    curr_player,
+    curr_player = 0,
     game = Object.create(game_obj);
 
   return {
@@ -48,12 +48,13 @@ gameKeeper_obj = (function() {
             )) {
             var total = r[0] + r[1] + r[2];
 
-            console.log(" " + (100 * (r[0]/total)).toPrecision(3) + "     " 
-                            + (100 * (r[1]/total)).toPrecision(3) + "     "
-                            + (100 * (r[2]/total)).toPrecision(3) + "     "
+            console.log(" " + (100 * (r[0]/total)).toPrecision(3) + "%    " 
+                            + (100 * (r[1]/total)).toPrecision(3) + "%    "
+                            + (100 * (r[2]/total)).toPrecision(3) + "%    "
                             + total);
           }
-        }
+        },
+        logged: function() { return undefined; }
       };
 
       // Merge supplied helper functions with defaults
@@ -65,14 +66,14 @@ gameKeeper_obj = (function() {
         var winner = this.runGame();
         this.endGame();
 
-        // Log the results
-        helpers.log(i, results);
-
         // Save the results (for future reference)
         results[winner + 1]++;
+
+        // Log the results
+        helpers.log(i, results);
       }
 
-      return results;
+      return helpers.logged();
     }
   }
 })();

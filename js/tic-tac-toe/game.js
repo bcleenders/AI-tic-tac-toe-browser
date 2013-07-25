@@ -19,14 +19,13 @@ var game_obj = (function() {
 				throw "Invalid field value";
 
 			if(grid[field] > -1 && value > -1) {
-				console.log(grid);
-				console.log(field);
-				console.log(value);
-				console.log(this.finished());
+				console.log(this.toString());
+				console.log("Overriding field; " + field);
 				throw "You can't override a field"
 			}
 
 			grid[field] = value;
+
 			return true;
 		},
 		getWinner: function() {

@@ -79,7 +79,7 @@ var player_ai_obj = (function() {
 		},
 
 		punish: function() {
-			knowledge.scores[previous_state]
+			knowledge.scores[previous_state] = -0.5;
 		}
 	}
 })();
