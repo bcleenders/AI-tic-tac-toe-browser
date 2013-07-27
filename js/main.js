@@ -52,7 +52,7 @@ var run = function(iterations, chartID) {
   ])[chartID - 1];
 
   // Start with a clean slate
-  settings.chart.html("Calculating...");
+  settings.chart.html(" ");
 
   results = gamekeeper.match(iterations, settings.players[0], settings.players[1], Object.create(helpers()));
   visualizer.visualize(results, settings.title, settings.chart);
