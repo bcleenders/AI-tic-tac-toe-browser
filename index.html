@@ -2,44 +2,71 @@
 <head>
   <title>AI tic-tac-toe</title>
   <link href="./css/jquery.jqplot.min.css" rel="stylesheet" type="text/css" />
+  <link href="./css/style.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>Hi there</h1>
-  <p>
-    This is a short demo of an artificial intelligence bot, which learns to play tic-tac-toe using reinforcement learning.<br />
-    I originally wrote it for Node.js, but rewrote it a little to make it function in a browser as well.
-  </p>
-  <p>
-    In a match of "player 1 vs player 2", the graphs represent the percentage of games a player has won. The line with the X's marks the scores of the first player, the line with the O's marks the scores of the second player, and the line with the diamonds marks the percentage of draws.
-  </p>
+  <div class="container">
+    <h1>Hi there,</h1>
+    <p>
+      This is a short demo of an artificial intelligence bot, which learns to play tic-tac-toe using reinforcement learning.<br />
+      I originally wrote it for Node.js, but rewrote it a little to make it function in a browser as well.
+    </p>
+    <p>
+      When you load the page, the matches are automatically played. If your browser feels a bit slow for a short time, it's probably because of all the calculations done in the background...
+    </p>
+    <p>
+      In a match of "player 1 vs player 2", the graphs represent the percentage of games a player has won. The line with the X's marks the scores of the first player, the line with the O's marks the scores of the second player, and the line with the diamonds marks the percentage of draws.
+    </p>
 
-  <p>
-    Every round, the starting player is changed, to keep things fair.
-  </p>
+    <p>
+      Every round, the starting player is changed, to keep things fair.
+    </p>
 
-  <p>
-    <h2>AI - AI</h2>
-    Battle of the brains; two AI bots combating each other.
-    <div id="chart1" style="height:600px; width:800px;"></div>
-  </p>
+    <p>
+      <h2>AI - AI</h2>
+      Battle of the brains; two AI bots combating each other.<br />
+      We can clearly see that both bots play roughly equally well, and they want to win, not just play a draw.
 
-  <br />
-  <br />
-  
-  <p>
-    <h2>AI - random</h2>
-    The random bot choses a random (free) field, the AI remains the same.
-    <div id="chart2" style="height:600px; width:800px;"></div>
-  </p>
+      <div id="chart1" style="height:600px; width:800px;"></div>
+      <span class="pull-right">
+        Rematch? How many games?
+        <input type="text" id="chart1-input" value="10000" style="vertical-align:baseline">
+        <input type="submit" class="btn" value="Recalculate" style="vertical-align:baseline" onClick="run($('#chart1-input').val(), 1);"/>
+      </span>
+    </p>
 
-  <br />
-  <br />
+    <br />
+    <br />
+    
+    <p>
+      <h2>AI - random</h2>
+      The random bot choses a random (free) field, the AI remains the same.<br />
+      We clearly see that even with very little training, the bot already has slightly more chance on winning a game. Training rapidly improves this. Mind you; this graph has a little more input data than the previous, to show the continuing learning curve of the bot.
+      <div id="chart2" style="height:600px; width:800px;"></div>
+      <span class="pull-right">
+        Rematch? How many games?
+        <input type="text" id="chart2-input" value="50000" style="vertical-align:baseline">
+        <input type="submit" class="btn" value="Recalculate" style="vertical-align:baseline" onClick="run($('#chart2-input').val(), 2);"/>
+      </span>
+    </p>
 
-  <p>
-    <h2>AI - dumb</h2>
-    The dumb bot choses the next free field (in reading order; left top first, right bottom last).
-    <div id="chart3" style="height:600px; width:800px;"></div>
-  </p>
+    <br />
+    <br />
+
+    <p>
+      <h2>AI - dumb</h2>
+      The dumb bot choses the next free field (in reading order; left top first, right bottom last).<br />
+      This graph varies a lot every time you render it. The AI always wins on the long term, but the first few games strongly influence the graph. Since the dumb bot plays very predictibaly, the bot can quickly learn.<br />
+      Now what causes this difference? Well, if the bot wins a few times at the start, he quickly learns and keeps winning most future games. If the bot loses a few matches or plays very suboptimally at the start, his knowledge is "polluted" and his training becomes harder.
+      <div id="chart3" style="height:600px; width:800px;"></div>
+      <span class="pull-right">
+        Rematch? How many games?
+        <input type="text" id="chart3-input" value="75000" style="vertical-align:baseline">
+        <input type="submit" class="btn" value="Recalculate" style="vertical-align:baseline" onClick="run($('#chart3-input').val(), 3);"/>
+      </span>
+    </p>
+  </div>
 
   <!-- Visual stuff -->
   <script src="./js/visual/jquery.min.js"         type="text/javascript"></script>

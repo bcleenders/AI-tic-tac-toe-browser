@@ -14,13 +14,6 @@ var training_data = {
   counts: []
 }
 
-// Provide training data
-/*if(typeof player1.init == 'function')
-  player1.init(training_data);
-if(typeof player2.init == 'function')
-  player2.init(training_data);
-*/
-
 var helpers = function() {
   var results_history = [[],[],[]];
 
@@ -42,11 +35,29 @@ var helpers = function() {
   }
 };
 
-results = gamekeeper.match(10000, player1, player2, Object.create(helpers()));
-visualizer.visualize(results, "AI vs AI",         $('#chart1'));
+var run = function(iterations, chartID) {
+  if(iterations == 0)
+    return;
 
-results = gamekeeper.match(50000, player3, player4, Object.create(helpers()));
-visualizer.visualize(results, "AI vs random bot", $('#chart2'));
+  var settings = ([
+    { players: [player1, player2],
+      title: "AI vs AI",
+      chart: $('#chart1')         },
+    { players: [player3, player4],
+      title: "AI vs random bot",
+      chart: $('#chart2')         },
+    { players: [player5, player6],
+      title: "AI vs dumb bot",
+      chart: $('#chart3')         }
+  ])[chartID - 1];
 
-results = gamekeeper.match(50000, player5, player6, Object.create(helpers()));
-visualizer.visualize(results, "AI vs dumb bot",   $('#chart3'));
+  // Start with a clean slate
+  settings.chart.html("Calculating...");
+
+  results = gamekeeper.match(iterations, settings.players[0], settings.players[1], Object.create(helpers()));
+  visualizer.visualize(results, settings.title, settings.chart);
+}
+
+run(10000, 1);
+run(50000, 2);
+run(50000, 3);
